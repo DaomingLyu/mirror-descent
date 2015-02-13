@@ -2,7 +2,7 @@ import numpy as np
 import scipy.sparse as sps
 import scipy.sparse.linalg
 
-def least_squares(A, b, blocks, iters=300, tolerance=1e-9):
+def least_squares(A, b, blocks, iters=1000, tolerance=1e-9):
     n_vector = np.array(
             [([block_size]*block_size) for block_size in blocks])
     n_vector = np.squeeze(n_vector.reshape((-1, 1)))
@@ -57,4 +57,5 @@ def test_least_squares():
     np.testing.assert_almost_equal(np.array([0.25, 0.75, 0.25, 0.75]),
             two_block_simple_soln)
 
-test_least_squares()
+if __name__ == '__main__':
+    test_least_squares()
